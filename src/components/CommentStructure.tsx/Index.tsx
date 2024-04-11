@@ -1,28 +1,29 @@
-import './CommentStructure.scss'
-import { useContext } from 'react'
-import { GlobalContext } from '../../context/Provider'
-import InputField from '../InputField/Index'
-import { Menu, MenuItem } from '@szhsin/react-menu'
-import '@szhsin/react-menu/dist/core.css'
-import DeleteModal from './DeleteModal'
-import React from 'react'
+/* eslint-disable prettier/prettier */
+import './CommentStructure.scss';
+import React, { useContext } from 'react';
+import { GlobalContext } from '../../context/Provider';
+import InputField from '../InputField/Index';
+import { Menu, MenuItem } from '@szhsin/react-menu';
+import '@szhsin/react-menu/dist/core.css';
+import DeleteModal from './DeleteModal';
+import { useTranslation } from 'react-i18next';
 
 interface CommentStructureProps {
   info: {
-    userId: string
-    comId: string
-    fullName: string
-    avatarUrl: string
-    text: string
-    userProfile?: string
-    replies?: Array<object> | undefined
-  }
-  editMode: boolean
-  parentId?: string
-  replyMode: boolean
+    userId: string,
+    comId: string,
+    fullName: string,
+    avatarUrl: string,
+    text: string,
+    userProfile?: string,
+    replies?: Array<any> | undefined,
+  },
+  editMode: boolean,
+  parentId?: string,
+  replyMode: boolean,
   logIn: {
-    loginLink: string
-    signupLink: string
+    loginLink: string,
+    signupLink: string,
   }
 }
 
@@ -34,6 +35,7 @@ const CommentStructure = ({
 }: CommentStructureProps) => {
   const globalStore: any = useContext(GlobalContext)
   const currentUser = globalStore.currentUserData
+  const { t } = useTranslation();
 
   const optionsMenu = () => {
     return (
@@ -48,9 +50,9 @@ const CommentStructure = ({
             }
           >
             <MenuItem
-              onClick={() => globalStore.handleAction(info.comId, true)}
+              onClick={() => globalStore.handleActioDeleten(info.comId, true)}
             >
-              edit
+              {t('alerts:edit')}
             </MenuItem>
             <MenuItem>
               <DeleteModal comId={info.comId} parentId={parentId} />
@@ -64,7 +66,7 @@ const CommentStructure = ({
   const userInfo = () => {
     return (
       <div className='commentsTwo'>
-        <a className='userLink' target='_blank' href={info.userProfile}>
+        <a className='userLink' target='_blank' href={info.userProfile} rel="noreferrer">
           <div>
             <img
               src={info.avatarUrl}
@@ -120,7 +122,7 @@ const CommentStructure = ({
                   onClick={() => globalStore.handleAction(info.comId, false)}
                 >
                   <div className='replyIcon' />
-                  <span style={{ marginLeft: 17 }}>Reply</span>
+                  <span style={{ marginLeft: 17 }}>{t('alerts:reply')}</span>
                 </button>
               </div>
             )}
@@ -143,8 +145,8 @@ const CommentStructure = ({
               marginLeft: '-15px'
             }}
             comId={info.comId}
-            fillerText={''}
-            mode={'replyMode'}
+            fillerText=""
+            mode="replyMode"
             parentId={parentId}
           />
         </div>
@@ -159,7 +161,7 @@ const CommentStructure = ({
           }}
           comId={info.comId}
           fillerText={info.text}
-          mode={'editMode'}
+          mode="editMode"
           parentId={parentId}
         />
       )

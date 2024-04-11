@@ -1,0 +1,9 @@
+
+{
+  "alert": "¿Estás seguro?",
+  "message": "¡Una vez que elimines este comentario, desaparecerá para siempre!",
+  "reply": "Responder",
+  "delete": "Eliminar",
+  "edit": "Editar",
+  "cancel": "Cancelar"
+}

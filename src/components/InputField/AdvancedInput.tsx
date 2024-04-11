@@ -1,23 +1,24 @@
-import React, { useState, useEffect } from 'react'
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
-import { useContext } from 'react'
-import { GlobalContext } from '../../context/Provider'
-import { EditorState, ContentState, convertToRaw } from 'draft-js'
-import { Editor } from 'react-draft-wysiwyg'
-import draftToHtml from 'draftjs-to-html'
-import htmlToDraft from 'html-to-draftjs'
+/* eslint-disable prettier/prettier */
+import React, { useState, useEffect, useContext } from 'react';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import { GlobalContext } from '../../context/Provider';
+import { EditorState, ContentState, convertToRaw } from 'draft-js';
+import { Editor } from 'react-draft-wysiwyg';
+import draftToHtml from 'draftjs-to-html';
+import htmlToDraft from 'html-to-draftjs';
+import { t } from 'i18next';
 
 interface AdvancedInputProps {
-  formStyle?: object
-  handleSubmit: Function
-  mode?: string
-  cancelBtnStyle?: object
-  submitBtnStyle?: object
-  comId?: string
-  imgStyle?: object
-  imgDiv?: object
-  customImg?: string
-  text: string
+  formStyle?: any,
+  handleSubmit: Function,
+  mode?: string,
+  cancelBtnStyle?: any,
+  submitBtnStyle?: any,
+  comId?: string,
+  imgStyle?: any,
+  imgDiv?: any,
+  customImg?: string,
+  text: string,
 }
 
 const AdvancedInput = ({
@@ -35,12 +36,12 @@ const AdvancedInput = ({
   const [html, setHtml] = useState('<p></p>')
   const globalStore: any = useContext(GlobalContext)
   useEffect(() => {
-    if (text != '') {
+    if (text !== '') {
       setHtml(text)
     }
   }, [text])
   useEffect(() => {
-    if (html != '<p></p>') {
+    if (html !== '<p></p>') {
       setEditor(EditorState.createWithContent(contentState))
     }
   }, [html])
@@ -68,7 +69,7 @@ const AdvancedInput = ({
       <div className='userImg' style={imgDiv}>
         <a
           target='_blank'
-          href={globalStore.currentUserData.currentUserProfile}
+          href={globalStore.currentUserData.currentUserProfile} rel="noreferrer"
         >
           <img
             src={
@@ -87,7 +88,7 @@ const AdvancedInput = ({
           className='form advanced-form '
           style={globalStore.formStyle || formStyle}
           onSubmit={async (e) =>
-            editText != '<p></p>'
+            editText !== '<p></p>'
               ? (await handleSubmit(e, editText),
                 setEditor(EditorState.createEmpty()))
               : null
@@ -96,7 +97,7 @@ const AdvancedInput = ({
           <div className='advanced-border'>
             <Editor
               editorState={editorState}
-              placeholder={'Type your reply here'}
+              placeholder={t('general:reply')}
               onEditorStateChange={(editorState) =>
                 onEditorStateChange(editorState)
               }
@@ -185,22 +186,22 @@ const AdvancedInput = ({
                     : globalStore.handleAction(comId, false)
                 }
               >
-                Cancel
+                {t('general:cancel')}
               </button>
             )}
             <button
               className='advanced-post postBtn'
               type='submit'
-              disabled={editText === '<p></p>' ? true : false}
+              disabled={editText === '<p></p>'}
               style={globalStore.submitBtnStyle || submitBtnStyle}
               onClick={async (e) =>
-                editText != '<p></p>'
+                editText !== '<p></p>'
                   ? (await handleSubmit(e, editText),
                     setEditor(EditorState.createEmpty()))
                   : null
               }
             >
-              Post
+              {t('general:post')}
             </button>
           </div>
         </form>

@@ -1,22 +1,23 @@
-import React from 'react'
-import './InputField.scss'
-import { useContext } from 'react'
-import { GlobalContext } from '../../context/Provider'
-import EmojiInput from './EmojiInput'
+/* eslint-disable prettier/prettier */
+import React, { useContext }  from 'react';
+import './InputField.scss';
+import { GlobalContext } from '../../context/Provider';
+import EmojiInput from './EmojiInput';
+import { t } from 'i18next';
 
 interface RegularInputProps {
-  formStyle?: object
-  comId?: string
-  mode?: string
-  customImg?: string
-  inputStyle?: object
-  cancelBtnStyle?: object
-  submitBtnStyle?: object
-  imgStyle?: object
-  imgDiv?: object
-  handleSubmit: Function
-  text: string
-  setText: Function
+  formStyle?: any,
+  comId?: string,
+  mode?: string,
+  customImg?: string,
+  inputStyle?: any,
+  cancelBtnStyle?: any,
+  submitBtnStyle?: any,
+  imgStyle?: any,
+  imgDiv?: any,
+  handleSubmit: Function,
+  text: string,
+  setText: Function,
 }
 
 const RegularInput = ({
@@ -44,7 +45,7 @@ const RegularInput = ({
       <div className='userImg' style={imgDiv}>
         <a
           target='_blank'
-          href={globalStore.currentUserData.currentUserProfile}
+          href={globalStore.currentUserData.currentUserProfile} rel="noreferrer"
         >
           <img
             src={
@@ -67,7 +68,7 @@ const RegularInput = ({
               : globalStore.inputStyle || inputStyle
           }
           type='text'
-          placeholder='Type your reply here.'
+          placeholder={t('general:reply')}
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
@@ -91,17 +92,17 @@ const RegularInput = ({
               : globalStore.handleAction(comId, false)
           }
         >
-          Cancel
+          {t('general:cancel')}
         </button>
       )}
       <button
         className='postBtn'
         type='submit'
-        disabled={text != '' ? false : true}
+        disabled={text === ''}
         style={globalStore.submitBtnStyle || submitBtnStyle}
         onClick={(e) => (text ? handleSubmit(e) : null)}
       >
-        Post
+        {t('general:post')}
       </button>
     </form>
   )

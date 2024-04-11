@@ -1,0 +1,8 @@
+{
+  "alert": "Are you sure?",
+  "message": "Once you delete this comment it will be gone forever!",
+  "reply": "Reply",
+  "delete": "Delete",
+  "edit": "Edit",
+  "cancel": "Cancel"
+}

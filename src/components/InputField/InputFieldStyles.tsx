@@ -1,3 +1,3 @@
 export const inputFrame = {
-  backgroundColor: "gray",
-};
+  backgroundColor: 'gray'
+}

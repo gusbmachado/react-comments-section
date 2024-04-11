@@ -14,6 +14,7 @@
   }
 
   .loginBtn {
+    min-width: 75px;
     border: 2px solid rgb(0, 195, 255);
     border-radius: 8px;
     background-color: transparent;
@@ -29,6 +30,7 @@
     }
   }
   .signBtn {
+    min-width: 75px;
     border: 2px solid rgb(0, 195, 255);
     border-radius: 8px;
     background-color: rgb(0, 195, 255);

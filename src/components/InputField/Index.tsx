@@ -1,23 +1,23 @@
-import './InputField.scss'
-import { useContext, useEffect, useState } from 'react'
-import { GlobalContext } from '../../context/Provider'
-import React from 'react'
-const { v4: uuidv4 } = require('uuid')
-import RegularInput from './RegularInput'
-import AdvancedInput from './AdvancedInput'
+/* eslint-disable prettier/prettier */
+import './InputField.scss';
+import React, { useContext, useEffect, useState } from 'react';
+import { GlobalContext } from '../../context/Provider';
+import RegularInput from './RegularInput';
+import AdvancedInput from './AdvancedInput';
+const { v4: uuidv4 } = require('uuid');
 
 interface InputFieldProps {
-  formStyle?: object
-  comId?: string
-  fillerText?: string
-  parentId?: string
-  mode?: string
-  customImg?: string
-  inputStyle?: object
-  cancelBtnStyle?: object
-  submitBtnStyle?: object
-  imgStyle?: object
-  imgDiv?: object
+  formStyle?: any,
+  comId?: string,
+  fillerText?: string,
+  parentId?: string,
+  mode?: string,
+  customImg?: string,
+  inputStyle?: any,
+  cancelBtnStyle?: any,
+  submitBtnStyle?: any,
+  imgStyle?: any,
+  imgDiv?: any,
 }
 
 const InputField = ({
@@ -44,7 +44,7 @@ const InputField = ({
   const globalStore: any = useContext(GlobalContext)
 
   const editMode = async (advText?: string) => {
-    const textToSend = advText ? advText : text
+    const textToSend = advText || text
 
     return (
       await globalStore.onEdit(textToSend, comId, parentId),
@@ -64,7 +64,7 @@ const InputField = ({
   }
 
   const replyMode = async (replyUuid: string, advText?: string) => {
-    const textToSend = advText ? advText : text
+    const textToSend = advText || text
 
     return (
       await globalStore.onReply(textToSend, comId, parentId, replyUuid),
@@ -84,7 +84,7 @@ const InputField = ({
     )
   }
   const submitMode = async (createUuid: string, advText?: string) => {
-    const textToSend = advText ? advText : text
+    const textToSend = advText || text
 
     return (
       await globalStore.onSubmit(textToSend, createUuid),

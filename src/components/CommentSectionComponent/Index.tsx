@@ -1,22 +1,23 @@
-import CommentStructure from '../CommentStructure.tsx/Index'
-import InputField from '../InputField/Index'
-import './CommentSection.css'
-import { useContext } from 'react'
-import { GlobalContext } from '../../context/Provider'
-import _ from 'lodash'
-import React from 'react'
-import LoginSection from '../LoginSection/LoginSection'
-import NoComments from './NoComments'
+/* eslint-disable prettier/prettier */
+import CommentStructure from '../CommentStructure.tsx/Index';
+import InputField from '../InputField/Index';
+import './CommentSection.css';
+import React, { useContext } from 'react';
+import { GlobalContext } from '../../context/Provider';
+import _ from 'lodash';
+import LoginSection from '../LoginSection/LoginSection';
+import NoComments from './NoComments';
+import { useTranslation } from 'react-i18next';
 
 interface CommentSectionProps {
-  overlayStyle?: object
+  overlayStyle?: any,
   logIn: {
-    loginLink: string
-    signupLink: string
-  }
-  hrStyle?: object
-  titleStyle?: object
-  customNoComment?: Function
+    loginLink: string,
+    signupLink: string,
+  },
+  hrStyle?: any,
+  titleStyle?: any,
+  customNoComment?: Function,
 }
 
 const CommentSection = ({
@@ -29,8 +30,8 @@ const CommentSection = ({
   const loginMode = () => {
     return (
       <LoginSection
-        loginLink={logIn!.loginLink}
-        signUpLink={logIn!.signupLink}
+        loginLink={logIn?.loginLink}
+        signUpLink={logIn?.signupLink}
       />
     )
   }
@@ -45,11 +46,16 @@ const CommentSection = ({
     return count
   }
 
+  const { t } = useTranslation()
+
   return (
     <div className='overlay' style={overlayStyle}>
       <span className='comment-title' style={titleStyle}>
-        {globalStore.commentsCount || totalComments()}{' '}
-        {totalComments() === 1 ? 'Comment' : 'Comments'}
+        {/* {globalStore.commentsCount || totalComments()}{' '}
+        {totalComments() === 1 ? 'Comment' : 'Comments'} */}
+        {t('general:comment', {
+          count: globalStore.commentsCount || totalComments()
+        })}
       </span>
       <hr className='hr-style' style={hrStyle} />
       {globalStore.currentUserData === null ? (
@@ -61,27 +67,23 @@ const CommentSection = ({
       {globalStore.data.length > 0 ? (
         globalStore.data.map(
           (i: {
-            userId: string
-            comId: string
-            fullName: string
-            avatarUrl: string
-            text: string
-            userProfile?: string
-            replies: Array<any> | undefined
+            userId: string,
+            comId: string,
+            fullName: string,
+            avatarUrl: string,
+            text: string,
+            userProfile?: string,
+            replies: Array<any> | undefined,
           }) => {
             return (
               <div key={i.comId}>
                 <CommentStructure
                   info={i}
                   editMode={
-                    _.indexOf(globalStore.editArr, i.comId) === -1
-                      ? false
-                      : true
+                    _.indexOf(globalStore.editArr, i.comId) !== -1
                   }
                   replyMode={
-                    _.indexOf(globalStore.replyArr, i.comId) === -1
-                      ? false
-                      : true
+                    _.indexOf(globalStore.replyArr, i.comId) !== -1
                   }
                   logIn={logIn}
                 />
@@ -94,14 +96,10 @@ const CommentSection = ({
                           info={j}
                           parentId={i.comId}
                           editMode={
-                            _.indexOf(globalStore.editArr, j.comId) === -1
-                              ? false
-                              : true
+                            _.indexOf(globalStore.editArr, j.comId) !== -1
                           }
                           replyMode={
-                            _.indexOf(globalStore.replyArr, j.comId) === -1
-                              ? false
-                              : true
+                            _.indexOf(globalStore.replyArr, j.comId) !== -1
                           }
                           logIn={logIn}
                         />

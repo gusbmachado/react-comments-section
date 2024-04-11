@@ -1,0 +1,11 @@
+{
+  "nocomments": "Não há comentários aqui. Seja o primeiro a comentar!",
+  "post": "Publicar",
+  "cancel": "Cancelar",
+  "comment_one": "{{count}} Comentário",
+  "comment_other": "{{count}} Comentários",
+  "log": "Faça login ou cadastre-se para deixar um comentário",
+  "login": "Login",
+  "signup": "Registar-se",
+  "reply": "Digite sua resposta aqui"
+}

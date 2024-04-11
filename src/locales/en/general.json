@@ -1,0 +1,11 @@
+{
+  "nocomments": "No comments here. Be the first one to comment!",
+  "post": "Post",
+  "cancel": "Cancel",
+  "comment_one": "{{count}} Comment",
+  "comment_other": "{{count}} Comments",
+  "log": "Log in or sign up to leave a comment",
+  "login": "Log In",
+  "signup": "Sign Up",
+  "reply": "Type your reply here"
+}
