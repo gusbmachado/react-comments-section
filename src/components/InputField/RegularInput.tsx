@@ -67,7 +67,7 @@ const RegularInput = ({
               : globalStore.inputStyle || inputStyle
           }
           type='text'
-          placeholder='Type your reply here.'
+          placeholder='Digite sua resposta aqui'
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
@@ -91,7 +91,7 @@ const RegularInput = ({
               : globalStore.handleAction(comId, false)
           }
         >
-          Cancel
+          Cancelar
         </button>
       )}
       <button
@@ -101,7 +101,7 @@ const RegularInput = ({
         style={globalStore.submitBtnStyle || submitBtnStyle}
         onClick={(e) => (text ? handleSubmit(e) : null)}
       >
-        Post
+        Publicar
       </button>
     </form>
   )

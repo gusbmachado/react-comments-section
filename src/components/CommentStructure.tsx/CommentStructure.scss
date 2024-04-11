@@ -120,10 +120,11 @@
 }
 
 .react-responsive-modal-modal {
-  max-width: 240px !important;
+  border-radius: 6px;
   h2,
   p {
     text-align: center;
+    margin-bottom: 10px;
   }
 }
 .deleteBtns {

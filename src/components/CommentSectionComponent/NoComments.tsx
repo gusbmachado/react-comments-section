@@ -4,7 +4,7 @@ const NoComments = () => {
   return (
     <div className='no-comDiv'>
       {' '}
-      No comments here. Be the first one to comment!
+      Nenhum comentário ainda. Seja o primeiro a comentar!
     </div>
   )
 }

@@ -49,7 +49,7 @@ const CommentSection = ({
     <div className='overlay' style={overlayStyle}>
       <span className='comment-title' style={titleStyle}>
         {globalStore.commentsCount || totalComments()}{' '}
-        {totalComments() === 1 ? 'Comment' : 'Comments'}
+        {totalComments() === 1 ? 'Comentário' : 'Comentários'}
       </span>
       <hr className='hr-style' style={hrStyle} />
       {globalStore.currentUserData === null ? (
